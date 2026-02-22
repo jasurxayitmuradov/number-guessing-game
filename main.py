@@ -60,7 +60,7 @@ Please select the difficulty level:
     
     clear_terminal()
 
-    loading_animation(8)
+    loading_animation(5)
 
     
 
@@ -76,12 +76,25 @@ Please select the difficulty level:
             print(f"Incorrect! The number is less than {number}.")
         else:
             print(f"Congratulations! You guessed the correct number in {temp - chances} attempts.")
-            return
+            print("If you want you can play again just tell me")
+            again = int(input("Do you want to play again (1-Yes , 2 - No): "))
+            while(again not in [1,2]):
+                again = int(input("Please enter 1 or 2: "))
+            if again == 1:
+                main()
+            else:
+                return
         
 
     if not chances:
         print(f"You have used all of your chances. The number was [red]{random_number}[/red]")
-
+        again = int(input("Do you want to play again (1-Yes , 2 - No): "))
+        while(again not in [1,2]):
+            again = int(input("Please enter 1 or 2: "))
+        if again == 1:
+            main()
+        else:
+            return  
 
 
 main()
