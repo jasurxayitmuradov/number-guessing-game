@@ -40,12 +40,20 @@ Please select the difficulty level:
     
     print()
     level = int(input("Enter your choice: "))
-
+    
     difficulty = ["Easy" , "Medium" , "Hard"]
 
     while level not in [1,2,3]:
         level = int(input("You have to choice only these numbers 1 , 2, 3: "))
-
+    
+    if level == 1:
+        chances = 10
+    elif level == 2:
+        chances = 5
+    else:
+        chances = 3
+    random_number = rn.randint(1 , 100)
+    print(random_number)
     print(f"Great! You have selected the [blue]{difficulty[level- 1]}[/blue] difficulty level.")
 
     time.sleep(2)
@@ -54,5 +62,26 @@ Please select the difficulty level:
 
     loading_animation(8)
 
-main()
+    
 
+    clear_terminal()
+    
+    temp = chances
+    while(chances > 0):
+        chances-=1
+        number = int(input("Enter your guess: "))
+        if number < random_number:
+            print(f"Incorrect! The number is greater than {number}.")
+        elif number > random_number:
+            print(f"Incorrect! The number is less than {number}.")
+        else:
+            print(f"Congratulations! You guessed the correct number in {temp - chances} attempts.")
+            return
+        
+
+    if not chances:
+        print(f"You have used all of your chances. The number was [red]{random_number}[/red]")
+
+
+
+main()
